@@ -9,6 +9,8 @@ gem 'rake', '0.9.2'
 
 gem 'sqlite3'
 
+gem 'factory_girl_rails', '1.0'
+
 group :development do
   gem 'rspec-rails'
   gem 'annotate-models', '1.0.4'
@@ -19,6 +21,8 @@ group :test do
   gem 'webrat', '0.7.1'
   gem 'spork', '0.9.0.rc4'
 end
+
+gem 'will_paginate', '>= 3.0.pre'
 
 # Use unicorn as the web server
 # gem 'unicorn'

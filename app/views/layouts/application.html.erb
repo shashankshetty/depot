@@ -14,10 +14,15 @@
     </div>
     <div id="columns">
         <div id="side">
-           <a href="">Home</a><br />
-           <a href="">Questions</a><br />
-           <a href="">News</a><br />
-           <a href="">Contact</a><br />
+          <% if @cart %>
+            <%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
+             <%= render @cart %>
+            <% end %>
+          <% end %>
+          <a href="">Home</a><br />
+          <a href="">Questions</a><br />
+          <a href="">News</a><br />
+          <a href="">Contact</a><br />
         </div>
         <div id="main">
             <%= yield %>

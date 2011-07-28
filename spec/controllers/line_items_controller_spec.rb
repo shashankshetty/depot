@@ -75,10 +75,22 @@ describe LineItemsController do
         assigns(:line_item).should be_persisted
       end
 
-      it "redirects to the cart" do
+      it "redirects to the store" do
         product = Product.create!(:title => "Lorem Ipsum", :description => "Testing the book", :image_url => 'lorem.jpg', :price => 10.25)
         post :create, :product_id => product.id
-        response.should redirect_to cart_path(assigns(:line_item).cart)
+        response.should redirect_to store_path
+        #cart_path(assigns(:line_item).cart)
+      end
+
+      it "should create line_item via ajax" do
+         product = Product.create!(:title => "Lorem Ipsum", :description => "Testing the book", :image_url => 'lorem.jpg', :price => 10.25)
+        expect {
+          xhr :post, :create, :product_id => product.id
+        }.to change(LineItem, :count).by(1)
+         #assert_select_rjs :replace_html, 'cart' do
+         #  assert_select 'tr#current_item td', /Programming Ruby 1.9/
+         #end
+        #response.should have_selector("tr>td", :content => "programming Ruby 1.9")
       end
     end
 
