@@ -31,8 +31,12 @@
             <% end %>
           <% end %>
           <a href="<%= root_url %>">Home</a><br />
-          <a href="<%= orders_path %>">Orders</a><br />
-          <a href="<%= products_path %>">Products</a><br />
+          <% if can? :manage, @order %>
+            <a href="<%= orders_path %>">Orders</a><br />
+          <% end %>
+          <% if can? :manage, @product %>
+            <a href="<%= products_path %>">Products</a><br />
+          <% end %>
         </div>
         <div id="main">
             <%= yield %>

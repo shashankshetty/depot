@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
   # GET /carts
   # GET /carts.xml
+  load_and_authorize_resource
+
   def index
     @carts = Cart.all
 
@@ -29,8 +31,6 @@ class CartsController < ApplicationController
   # GET /carts/new
   # GET /carts/new.xml
   def new
-    @cart = Cart.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @cart }
@@ -39,14 +39,11 @@ class CartsController < ApplicationController
 
   # GET /carts/1/edit
   def edit
-    @cart = Cart.find(params[:id])
   end
 
   # POST /carts
   # POST /carts.xml
   def create
-    @cart = Cart.new(params[:cart])
-
     respond_to do |format|
       if @cart.save
         format.html { redirect_to(@cart, :notice => 'Cart was successfully created.') }
@@ -61,8 +58,6 @@ class CartsController < ApplicationController
   # PUT /carts/1
   # PUT /carts/1.xml
   def update
-    @cart = Cart.find(params[:id])
-
     respond_to do |format|
       if @cart.update_attributes(params[:cart])
         format.html { redirect_to(@cart, :notice => 'Cart was successfully updated.') }

@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
+
+  load_and_authorize_resource
+
   def index
     @orders = Order.paginate :page => params[:page], :order => 'created_at desc', :per_page => 10
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @orders }
@@ -13,8 +15,6 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.xml
   def show
-    @order = Order.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @order }
@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
       return
     end
 
-    @order = Order.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @order }
@@ -45,7 +44,6 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.xml
   def create
-    @order = Order.new(params[:order])
     @order.add_line_items_from_cart(current_cart)
 
     respond_to do |format|
@@ -64,8 +62,6 @@ class OrdersController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.xml
   def update
-    @order = Order.find(params[:id])
-
     respond_to do |format|
       if @order.update_attributes(params[:order])
         format.html { redirect_to(@order, :notice => 'Order was successfully updated.') }
@@ -80,7 +76,6 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.xml
   def destroy
-    @order = Order.find(params[:id])
     @order.destroy
 
     respond_to do |format|
