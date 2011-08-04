@@ -1,4 +1,6 @@
 Depot::Application.routes.draw do
+  devise_for :users
+
   resources :orders
 
   resources :line_items
@@ -10,7 +12,7 @@ Depot::Application.routes.draw do
   resources :products do
     get :who_bought, :on => :member
   end
-  root :to => 'store#index', :as => 'store'
+  root :to => 'store#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

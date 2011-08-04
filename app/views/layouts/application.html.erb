@@ -12,6 +12,17 @@
         <%= image_tag("logo.png") %>
         <%= @page_title || "Pragmatic Bookshelf" %>
     </div>
+    <% if notice %>
+        <p id="notice"><%= notice%></p>
+    <% end %>
+    <div id="user_nav">
+      <% if user_signed_in? %>
+        Signed in as <%= current_user.username %>. Not you?
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+      <% end %>
+    </div>
     <div id="columns">
         <div id="side">
           <% if @cart %>
@@ -19,10 +30,9 @@
              <%= render @cart %>
             <% end %>
           <% end %>
-          <a href="">Home</a><br />
-          <a href="">Questions</a><br />
-          <a href="">News</a><br />
-          <a href="">Contact</a><br />
+          <a href="<%= root_url %>">Home</a><br />
+          <a href="<%= orders_path %>">Orders</a><br />
+          <a href="<%= products_path %>">Products</a><br />
         </div>
         <div id="main">
             <%= yield %>

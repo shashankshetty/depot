@@ -51,7 +51,7 @@ describe OrdersController do
   describe "GET new" do
     it "requires atleast one item in the cart" do
       get :new
-      response.should redirect_to store_path
+      response.should redirect_to root_url
       flash[:notice].should =~ /Your cart is empty/
     end
 
@@ -82,7 +82,7 @@ describe OrdersController do
 
       it "redirects to the created order" do
         post :create, :order => valid_attributes
-        response.should redirect_to(store_path)
+        response.should redirect_to(root_url)
       end
     end
 

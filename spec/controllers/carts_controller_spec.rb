@@ -151,7 +151,7 @@ describe CartsController do
     it "redirects to the carts list" do
       cart = Cart.create! valid_attributes
       delete :destroy, :id => cart.id.to_s
-      response.should redirect_to(store_url)
+      response.should redirect_to(root_url)
     end
   end
 

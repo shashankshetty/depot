@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110725234301) do
+ActiveRecord::Schema.define(:version => 20110804040619) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at"
@@ -43,5 +43,8 @@ ActiveRecord::Schema.define(:version => 20110725234301) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'bool' for column 'is_admin'
 
 end

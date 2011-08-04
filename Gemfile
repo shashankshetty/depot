@@ -24,6 +24,10 @@ end
 
 gem 'will_paginate', '>= 3.0.pre'
 
+gem 'devise', '1.4.2'
+
+gem 'cancan', '1.6.5'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

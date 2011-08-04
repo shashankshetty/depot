@@ -38,5 +38,6 @@ module Depot
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    config.secret_token = 'a9bc8b2642cca521f3475466ce82d073e71098c8e4b8dfb74fb7bce56d1116b5e7e9d2bc9bbcd16f9a56a99e1aaab6ade6978ed222ad3b598b407ac325c1533c'
   end
 end

@@ -78,7 +78,7 @@ describe LineItemsController do
       it "redirects to the store" do
         product = Product.create!(:title => "Lorem Ipsum", :description => "Testing the book", :image_url => 'lorem.jpg', :price => 10.25)
         post :create, :product_id => product.id
-        response.should redirect_to store_path
+        response.should redirect_to root_url
         #cart_path(assigns(:line_item).cart)
       end
 
